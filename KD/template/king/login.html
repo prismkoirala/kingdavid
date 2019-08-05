@@ -1,0 +1,31 @@
+{% extends 'king/header.html' %}
+  {% load staticfiles %}
+    {% block body_block %}
+    <main class="page login-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Log In</h2>
+                    <p>Log In to your King David Account or Register Now!</p>
+                </div>
+                <form  method="POST" action="{% url 'king:user_login' %}">
+                    {% csrf_token %}
+
+                    <div class="container">
+                    Username: <input class="form-control" type="text" name="username" value="" size="50" />
+                    <br />
+                    Password: <input class="form-control item"  type="password" name="password" value="" size="50" />
+                    <br />
+
+                    <input class="btn btn-primary btn-block" type="submit" value="Login" />
+                      </div>
+
+                    <div class="alert alert-primary" style="margin-top:10px;" role="alert">
+                      Not a member yet? <a href="{% url 'king:register' %}"><button style="margin-left:10px;" class="btn btn-primary" type="button" name="SignUp">Sign Up!</button></a>
+                    </div>
+
+                  </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

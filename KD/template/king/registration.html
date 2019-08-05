@@ -1,0 +1,31 @@
+{% extends "king/header.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+    <main class="page registration-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                {% if registered %}
+                <div class="block-heading">
+                    <h2 class="text-info">Thank You For Your Registration -Team King David</h2>
+                    <button class="btn btn-primary" type="button" name="button">Login</button>
+                </div>
+
+                {% else %}
+                <div class="block-heading">
+                    <h2 class="text-info">Registration</h2>
+                    <p>Sign Up for KING DAVID</p>
+                </div>
+
+                    <form enctype="multipart/form-data" method="POST">
+                      {% csrf_token %}
+                      {{ user_form.as_p }}
+                      {{ profile_form.as_p }}
+                    <button class="btn btn-primary btn-block" type="Submit" value="Register" >Register</button>
+                  </form>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

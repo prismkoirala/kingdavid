@@ -1,0 +1,152 @@
+{% extends "king/header.html" %}
+{% load staticfiles %}
+
+  {% block body_block %}
+    <main class="page catalog-page">
+        <section class="clean-block clean-catalog dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">KD Store</h2>
+
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="d-none d-md-block">
+                                <div class="filters">
+                                    <div class="filter-item">
+                                        <h3>Categories</h3>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Phones</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Laptops</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">PC</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Tablets</label></div>
+                                    </div>
+                                    <div class="filter-item">
+                                        <h3>Brands</h3>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Samsung</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Apple</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">HTC</label></div>
+                                    </div>
+                                    <div class="filter-item">
+                                        <h3>OS</h3>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">Android</label></div>
+                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">iOS</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-md-none"><a class="btn btn-link d-md-none filter-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="filters" role="button" href="#filters">Filters<i class="icon-arrow-down filter-caret"></i></a>
+                                <div class="collapse"
+                                    id="filters">
+                                    <div class="filters">
+                                        <div class="filter-item">
+                                            <h3>Categories</h3>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Phones</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Laptops</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">PC</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Tablets</label></div>
+                                        </div>
+                                        <div class="filter-item">
+                                            <h3>Brands</h3>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Samsung</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Apple</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">HTC</label></div>
+                                        </div>
+                                        <div class="filter-item">
+                                            <h3>OS</h3>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">Android</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">iOS</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="products">
+                                <div class="row no-gutters">
+
+                                  {% if list %}
+                                    {% for ls in list %}
+
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="clean-product-item">
+
+                                          <div class="image"><a href="#"><img class=" img-fluid d-block mx-auto " src="{{ ls.p_img.url }}" alt = "shit"></a></div>
+
+                                            <div class="product-name"><a href="#">{{ ls.p_title }}</a></div>
+
+                                            <div class="about">
+
+                                                <div class="price">
+                                                    <h3>${{ls.p_price }}</h3>
+                                                </div>
+
+                                                <a href="product_page/{{ ls.slug }}"><button class =" btn-primary btn-lg" type="button" name="button">Order</button></a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% endfor %}
+                                  {% else %}
+                                    <p>Nothing to Display!</p>
+                                  {% endif %}
+
+                                </div>
+                                {% if list.has_previous %}
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item"><a href="?page=1" class="page-link" aria-label="<<<"><span aria-hidden="true"><<<</span></a></li>
+                                        <li class="page-item active"><a href="?page={{ list.previous_page_number }}" class="page-link">«</a></li>
+                                        <li class="page-item"><a class="page-link">-</a></li>
+
+                                        <li class="page-item disabled"><a class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                                {% endif %}
+
+                              {% if list.has_next %}
+                              <nav>
+                                  <ul class="pagination">
+                                      <li class="page-item disabled"><a class="page-link">«</a></li>
+                                      <li class="page-item"><a class="page-link">-</a></li>
+                                      <li class="page-item"><a href="?page={{ list.next_page_number }}"class="page-link" aria-label="Previous">»<span aria-hidden="true"></span></a></li>
+                                      <li class="page-item"><a href="?page={{ list.paginator.num_pages }}" class="page-link">>>></a></li>
+
+                                  </ul>
+                              </nav>
+                              {% endif %}
+
+                            </div>
+                            <div class="pagination">
+    <span class="step-links">
+        {% if list.has_previous %}
+        <nav>
+            <ul class="pagination">
+            <a href="?page=1"><li class="page-item"><span aria-hidden="true"><<<</span></li>&laquo; <<<</a>
+            <a href="?page={{ list.previous_page_number }}"><li class="page-item"><span aria-hidden="true">«</span></li></a>
+            </ul>
+          </nav>
+        {% endif %}
+
+        <span class="current">
+            Page {{ list.number }} of {{ list.paginator.num_pages }}.
+        </span>
+
+        {% if list.has_next %}
+            <nav>
+            <ul class="pagination">
+            <a href="?page={{ list.next_page_number }}"><li class="page-item"><span aria-hidden="true">>></span></li></a>
+            <a href="?page={{ list.paginator.num_pages }}"><li class="page-item"><span aria-hidden="true">>>></span></li></a>
+            </ul>
+            </nav>
+        {% endif %}
+    </span>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "king/header.html" %}
+  {% load staticfiles %}
+    {% block body_block %}
+
+    <main class="page landing-page">
+       <section class="clean-block clean-hero" style="background-image:url({% static 'king_logo/poster.jpg' %});color:rgba(9, 162, 255, 0.85);">
+           <div class="text">
+               <h2>KING DAVID</h2>
+               <p>Classic Men & Women Grooming accessories.</p><button class="btn btn-outline-light btn-lg" type="button">Shop Now</button></div>
+       </section>
+       <section class="clean-block clean-info dark">
+           <div class="container">
+               <div class="block-heading">
+                   <h2 class="text-info">Info</h2>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+               </div>
+               <div class="row align-items-center">
+                   <div class="col-md-6"><img class="img-thumbnail" src="assets/img/scenery/image5.jpg"></div>
+                   <div class="col-md-6">
+                       <h3>Lorem impsum dolor sit amet</h3>
+                       <div class="getting-started-info">
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                       </div><button class="btn btn-outline-primary btn-lg" type="button">Join Now</button></div>
+               </div>
+           </div>
+       </section>
+      <h1>KD</h1><br>
+      <img src="{% static "king_logo/KING.png" %}" height="100" width='500' alt="oops">
+       <div class="container">
+        {% if dis %}
+          {%  for a in dis %}
+            {{ a.user_name }}
+            {% endfor %}
+            {% else %}
+            <p>no users!</p>
+      {% endif %}
+    </div>
+    <a href="{% url 'king:header' %}">go to header!</a>
+    {% endblock %}

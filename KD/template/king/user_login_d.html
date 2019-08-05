@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "king/header.html" %}
+  {% load staticfiles %}
+    {% block body_block %}
+    <main class="page landing-page">
+       <section class="clean-block clean-hero" style="background-image:url({% static 'img/image4.jpg' %});color:rgba(9, 162, 255, 0.85);">
+           <div class="text">
+               <h2>KING DAVID</h2>
+               <form method="post">
+                 {{form.as_p}}<br>
+                 {%  csrf_token %}
+                 <input type="submit" class="btn btn-primary btn-lg" value="submit">
+               </form>
+             </div>
+       </section>
+     </main>
+    {% endblock %}
